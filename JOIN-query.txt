@@ -1,6 +1,6 @@
 1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
 
-SELECT `degrees`.`name` as `nome corso`, `students`.`id`, `students`.`name`, `students`.`surname` 
+SELECT `degrees`.`name` as `nome_corso`, `students`.`id`, `students`.`name`, `students`.`surname` 
 FROM `degrees` 
 INNER JOIN `students` ON `students`.`degree_id` = `degrees`.`id` 
 WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
@@ -10,7 +10,7 @@ ________________________________________________________________________________
 
 2. Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
 
-SELECT `departments`.`name` as `nome dipartimento`, `degrees`.`id`, `degrees`.`name` as `nome corso di laurea` 
+SELECT `departments`.`name` as `nome_dipartimento`, `degrees`.`id`, `degrees`.`name` as `nome_corso_di_laurea` 
 FROM `departments` 
 INNER JOIN `degrees`ON `degrees`.`department_id` = `departments`.`id` 
 WHERE `departments`.`name` = 'Dipartimento di Neuroscienze';
@@ -33,7 +33,7 @@ ________________________________________________________________________________
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il
 relativo dipartimento, in ordine alfabetico per cognome e nome
 
-SELECT `students`.`surname`, `students`.`name`, `degrees`.`id` as `id degree`, `degrees`.`name` as `name degree`, `degrees`.`level` as `level degree`, `degrees`.`address` as `address degree`, `degrees`.`email` as `email degree`, `departments`.`id` as `id deparment`, `departments`.`name` as `name department`
+SELECT `students`.`surname`, `students`.`name`, `degrees`.`id` as `id_degree`, `degrees`.`name` as `name_degree`, `degrees`.`level` as `level_degree`, `degrees`.`address` as `address_degree`, `degrees`.`email` as `email_degree`, `departments`.`id` as `id_deparment`, `departments`.`name` as `name_department`
 FROM `students`  
 INNER JOIN `degrees` ON `degree_id` = `degrees`.`id`
 INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
@@ -44,7 +44,7 @@ ________________________________________________________________________________
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
-SELECT `degrees`.*, `courses`.`id` as `id corso`, `courses`.`name` as `name corso`, `teachers`.`id` as `id teacher`, `teachers`.`name` as `name teacher`, `teachers`.`surname` as `surname teacher` 
+SELECT `degrees`.*, `courses`.`id` as `id corso`, `courses`.`name` as `name_corso`, `teachers`.`id` as `id_teacher`, `teachers`.`name` as `name_teacher`, `teachers`.`surname` as `surname_teacher` 
 FROM `degrees`
 INNER JOIN `courses` ON `courses`.`degree_id` = `degrees`.`id`
 INNER JOIN `course_teacher`ON `course_teacher`.`course_id` = `courses`.`id`
@@ -55,7 +55,7 @@ ________________________________________________________________________________
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
-SELECT DISTINCT `departments`.*, `teachers`.`id` as `id teacher`, `teachers`.`name` as `name teacher`, `teachers`.`surname` as `surname teacher` 
+SELECT DISTINCT `departments`.*, `teachers`.`id` as `id_teacher`, `teachers`.`name` as `name_teacher`, `teachers`.`surname` as `surname_teacher` 
 FROM `departments` 
 INNER JOIN `degrees` ON `degrees`.`department_id` = `departments`.`id` 
 INNER JOIN `courses` ON `courses`.`degree_id` = `degrees`.`id` 
