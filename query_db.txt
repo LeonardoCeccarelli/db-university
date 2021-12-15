@@ -14,7 +14,7 @@ ________________________________________________________________________________
 
 3. Selezionare tutti gli studenti che hanno più di 30 anni
 
-SELECT * FROM `students` WHERE DATE_FORMAT(`date_of_birth`, "%Y") > 1991;
+SELECT * FROM `students` WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURRENT_DATE) > 30;
 __________________________________________________________________________________
 
 
